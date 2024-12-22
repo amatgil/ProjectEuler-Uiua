@@ -209,8 +209,32 @@
   Input ← 100
 
   # TODO: This doesn't work. Where the hecc are we losing precision??
-  Call ← /+ dump(/◇⊂°⋕⇌) /(𝄈PE₁₆~BigIntMul) ⬚0≡base₁₀ +₁⇡ 100
+  Call ← /+ /(𝄈PE₁₆~BigIntMul) ⬚0≡base₁₀ +₁⇡ 100
 
+└─╴
+┌─╴PE₂₂
+  Call ← (
+    ⊜□⊸≠@, &fras "./inputs/0022_names.txt"
+    ⍚(/+ +₁ -@A↘₋₁↘₁) ⍆
+    °□/+⍚× ⊸(+₁⇡⧻)
+  )
+└─╴
+┌─╴PE₂₃
+  Ceiling    ← 28123
+  IsAbundant ← < /+ ▽⊸≡(≍⊸⁅) ⊸÷ ⊸(+₁⍜-₁⇡)
+  NotIn      ← ▽¬/↥⊸⊞=
+  Call ← (
+    # TODO: Make this not take 28m55s. Works though!
+    ⍜-⇡ 1 +₁ Ceiling
+    &p "getting abundant numbers"
+    ⊸(▽⊸≡IsAbundant) # All abundant numbers
+    &p "found abundant numbers"
+    ⊸/+ NotIn ♭⊞+.
+  )
+└─╴
+┌─╴PE₂₄
+  Input ← 10
+  Call  ← /◇⊂°⋕ ⊡-₁ 1e6⧅≠ : ⊸⇡
 └─╴
 ┌─╴PE₃₀
   Input ← 5
@@ -228,18 +252,3 @@
 └─╴
 
 # Running area
-# PE₉ # PE__9~Input
-# &p "Running 10"
-# PE₁₀ PE₁₀~Input
-# PE₁₂~DivisorsOf 20
-# PE₁₂ 5
-
-# PE₁₅ 20
-# PE₆₇~Input
-&p "Starting exec"
-PE₂₀
-&p "Exec done: _"
-
-# /+ /PE₁₆~F ↯1000_1 2
-# PE₂₀ 10
-# PE₁₈ PE₁₈~Input
