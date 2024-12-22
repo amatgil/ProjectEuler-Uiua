@@ -156,7 +156,22 @@
 └─╴
 ┌─╴PE₁₆
   Input ← 1000
-  Call  ← |1 /+ ∵⋕ °⋕ 𝄈ⁿ2 # I have no idea how to do this one actually
+
+  TrimZeros ← ▽¬⍜⇌\↧ ⊸=₀
+  UpdCarry ← ⍢(
+    + ⊓⊂₀⍜⇌⊂₀ ≡⊃(⌊÷₁₀|◿₁₀)
+  | /↥>₁₀
+  )
+  BigIntMul ← (
+    ⬚0≡UpdCarry ⊞×
+    ×𝄈ⁿ10⊸(⇡⧻)
+    /(UpdCarry ⬚0+) ⬚0≡UpdCarry
+    UpdCarry
+    TrimZeros
+  )
+  Call ← /+ ⍥(BigIntMul[2]) ⊙[1]
+  # Call ← /+/F↯ ⊂⊙(1 2)
+  # Call  ← |1 /+ ∵⋕ °⋕ 𝄈ⁿ2 # I have no idea how to do this one actually
 └─╴
 ┌─╴PE₁₈
   {[75]
@@ -174,18 +189,13 @@
    [91 71 52 38 17 14 91 43 58 50 27 29 48]
    [63 66 4 68 89 53 67 30 73 16 69 87 40 31]
    [4 62 98 27 23 9 70 98 73 93 38 53 60 4 23]}
-  Data         ←
-  Input        ← Data
-  Index        ← 𝄈⊡°□⊡⊃(⊙⋅⊙|⋅⊙⋅)
-  AdjacentVals ← ≡⌟⊡+[0 1] : °□ ⊡+₁ ⊃(⊙⋅⊙|⋅⊙⋅)
-  MaxOf        ← °□/↥⍚/↥
-
+  Input ←
+  Index ← 𝄈⊡°□⊡⊃(⊙⋅⊙|⋅⊙⋅)
+  MaxOf ← °□/↥⍚/↥
   # y x Data
   CostOf ← -⊃(|Index|⋅⋅MaxOf)
-
-  # [y x] data
   Call ← |1 (
-    [0 0]
+    [0 0] # [y x] data
     ⊸(°□⊢path(
         ⊙⊙◌ ◡≡⌟(CostOf°⊟) [⍜⊣+₁.⍜⊢+₁] # Neighbours and costs
       | ≍⊓(°¤↙₁|-₁⧻)                  # Have we made it
@@ -194,11 +204,14 @@
     /+ ≡⌟Index ≡°⊟
   )
 └─╴
-┌─╴PE₆₇
-  Input ← ⊜(□⊜⋕ ⊸≠@\s) ⊸≠@\n &fras"./inputs/0067_triangle.txt"
-  Call  ← PE₁₈
-└─╴
 
+┌─╴PE₂₀
+  Input ← 100
+
+  # TODO: This doesn't work. Where the hecc are we losing precision??
+  Call ← /+ dump(/◇⊂°⋕⇌) /(𝄈PE₁₆~BigIntMul) ⬚0≡base₁₀ +₁⇡ 100
+
+└─╴
 ┌─╴PE₃₀
   Input ← 5
   Call ← (
@@ -207,6 +220,11 @@
     𝄈▽ ⟜≡⌟(≍⟜(/+𝄈ⁿbase₁₀)) # Check
     /+                     # Add up
   )
+└─╴
+
+┌─╴PE₆₇
+  Input ← ⊜(□⊜⋕ ⊸≠@\s) ⊸≠@\n &fras"./inputs/0067_triangle.txt"
+  Call  ← PE₁₈
 └─╴
 
 # Running area
@@ -218,5 +236,10 @@
 
 # PE₁₅ 20
 # PE₆₇~Input
-PE₁₈ PE₆₇~Input
+&p "Starting exec"
+PE₂₀
+&p "Exec done: _"
+
+# /+ /PE₁₆~F ↯1000_1 2
+# PE₂₀ 10
 # PE₁₈ PE₁₈~Input
