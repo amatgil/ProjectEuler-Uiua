@@ -244,6 +244,18 @@
   Input ← 10
   Call  ← /◇⊂°⋕ ⊡-₁ 1e6⧅≠ : ⊸⇡
 └─╴
+┌─╴PE₂₅
+  ┌─╴B
+    # LSB .. MSB
+    Base      ↚ 10
+    Propagate ↚ ⍥(▽⍜⇌\∨⊸≠₀ +⬚0↻₋₁∧⊃(⌊÷Base|◿Base) ˜⊂0)∞
+    New       ← Propagate¤
+    Add       ← Propagate⬚0+
+    Extract   ← /+×˜ⁿBase°⊏
+    Show      ← /⊂ ≡°⋕ ⇌
+  └─╴
+  Call ← ˜⊙∘⊓B~Show◌⍢(⊓⊃B~Add⊙◌+₁|<1000⧻) ∩B~New 1 0 1
+└─╴
 ┌─╴PE₂₈
   Input ← 1001
   Next  ← +₁ +⊸⊃(/↥/↥|⇡/↥△)
